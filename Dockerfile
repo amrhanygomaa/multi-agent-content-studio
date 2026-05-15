@@ -17,7 +17,8 @@ RUN rm -f .env .env.local .env.development .env.production
 RUN npm run build
 
 # Stage 2: Python backend with uv
-FROM python:3.12-slim
+# Keep this aligned with pyproject.toml: requires-python = ">=3.11,<3.12"
+FROM python:3.11-slim
 
 RUN pip install --no-cache-dir uv==0.8.13
 
@@ -31,7 +32,7 @@ COPY agents ./agents
 COPY common ./common
 COPY backend ./backend
 
-# Install dependencies into the system Python (no project venv)
+# Install dependencies into the image environment using the locked uv graph.
 RUN uv sync --frozen --no-dev
 
 # Copy built frontend from previous stage — must live next to api_server.py
