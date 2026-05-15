@@ -13,9 +13,9 @@ request.
 
 After deployment, Cloud Run prints the public service URL for the app.
 
-## What You Build
+## What Was Built
 
-You build two layers of the same application.
+The application is composed of two production layers.
 
 ### Layer 1 - The Agent Pipeline
 
@@ -40,31 +40,16 @@ and generated content to the browser with Server-Sent Events.
 
 ![Full-Stack Architecture](docs/assets/full-stack-architecture.png)
 
-## What You Learn
+## What This Project Includes
 
-### ADK Core Concepts
-
-- The ADK runtime: Runner, Session, SessionService, and the event model.
-- How session state flows between agents with `output_key` and `{key}` templating.
-- How callbacks can add observability and content safety guardrails.
-- How artifacts can provide persistent file storage across sessions.
-- How long-term memory can survive session boundaries.
-
-### Multi-Agent Design With ADK
-
-- When to use LLM-driven versus workflow-driven architectures.
-- How to chain agents with `SequentialAgent`.
-- How to build iterative quality loops with `LoopAgent` and `exit_loop`.
-- How to run tasks concurrently with `ParallelAgent`.
-- Coordination patterns such as `AgentTool` and `sub_agents`.
-
-### Deployment
-
-- Deploy ADK agents to Gemini Enterprise Agent Runtime.
-- Package a React and FastAPI app into a single Docker container.
-- Build the container in Cloud Build and store it in Artifact Registry.
-- Deploy the app to Cloud Run.
-- Connect the frontend/backend service to the remote agent runtime.
+- ADK runtime integration with managed remote execution on Agent Runtime.
+- Session-aware agent orchestration with state passed between workflow stages.
+- Callback hooks for observability and runtime behavior control.
+- A workflow-driven multi-agent design using sequential, loop, and parallel
+  execution patterns.
+- A bundled React and FastAPI application served from one Cloud Run container.
+- Cloud Build and Artifact Registry integration for production container builds.
+- Cloud Run configuration wired to the remote Agent Runtime resource.
 
 ## Google Cloud Architecture
 
