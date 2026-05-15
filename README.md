@@ -11,9 +11,7 @@ This is not a chatbot demo. It is a real web application backed by a team of
 collaborating AI agents that produce a complete content package from one topic
 request.
 
-Deployed app:
-
-https://content-studio-rjvlyp7t3a-uc.a.run.app
+After deployment, Cloud Run prints the public service URL for the app.
 
 ## What You Build
 
@@ -139,6 +137,19 @@ Or from Cloud Shell, Linux, or macOS:
 ```bash
 AUTO_APPROVE=true bash deployment/deploy-combined.sh
 ```
+
+## Clean Up Resources
+
+To avoid ongoing cloud costs, remove the deployed resources when you are done:
+
+```powershell
+gcloud run services delete content-studio --region us-central1 --project your-project-id --quiet
+gcloud artifacts repositories delete content-studio --location us-central1 --project your-project-id --quiet
+gcloud storage rm --recursive gs://your-project-id-content-studio --quiet
+```
+
+If you deployed an Agent Runtime, delete the `AGENT_ENGINE_RESOURCE_NAME`
+resource from Vertex AI Agent Engine, then clear it from `.env`.
 
 ## Local Checks
 
